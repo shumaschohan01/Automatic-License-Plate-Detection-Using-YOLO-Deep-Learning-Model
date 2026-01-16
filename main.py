@@ -9,8 +9,9 @@ st.set_page_config(page_title="LICENSE Detection AI", page_icon="⛑️", layout
 
 @st.cache_resource
 def load_yolo_model():
-    # Ensure this path matches your file location
-    model_path = r"C:\Users\kk\OneDrive\Desktop\streamlit\best (1).pt" 
+    # REMOVE the full local path: C:\Users\kk\OneDrive...
+    # USE just the filename if it is in the same folder on GitHub
+    model_path = "best (1).pt" 
     return YOLO(model_path)
 
 model = load_yolo_model()
@@ -64,4 +65,5 @@ if uploaded_file is not None:
                 st.info("The model could not identify any objects in this image.")
 
             # Show count for context
+
             st.metric(label="Total Objects Found", value=len(detections))
